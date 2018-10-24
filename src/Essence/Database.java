@@ -1,10 +1,11 @@
 package Essence;
+
 import java.sql.*;
 import java.util.ArrayList;
 
 public class Database {
     private static final String NAME = "database.db";
-    private static final String DB_PATH = "C:/ЧП-Світогляд/db/" + NAME;
+    private static final String DB_PATH = NAME;
     private static final String URL = "jdbc:sqlite:" + DB_PATH;
 
 
