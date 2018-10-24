@@ -1,5 +1,6 @@
 package Essence;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -10,6 +11,7 @@ public class Main {
 
 
     Scanner scan = new Scanner(System.in);
+        scan.useLocale(Locale.US);
 //        while (true) {
 //            System.out.println("Select an action: ");
 //            System.out.println(" **1** Create");
@@ -45,16 +47,16 @@ public class Main {
 //        }
 
 
-    Tariff tariff = new Tariff();
-
+   Tariff tariff = new Tariff();
+//
         Tariffs tariffs = new Tariffs();
         tariffs.show();
-        tariff.createTariff();
-        tariff = tariffs.getTariff();
+         tariff.createTariff();
+       tariff = tariffs.getTariff();
         tariff.updateTariff();
-
-
-
+//
+//
+//
 
 }
 
