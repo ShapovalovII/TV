@@ -1,5 +1,6 @@
 package Essence;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Tariffs {
@@ -23,7 +24,7 @@ public class Tariffs {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Tariff search: ");
-
+        scan.useLocale(Locale.US);
         System.out.print("Value: ");
         this.value = scan.nextDouble();
 

@@ -47,13 +47,13 @@ public class Main {
 //        }
 
 
-//    Tariff tariff = new Tariff();
+   Tariff tariff = new Tariff();
 //
         Tariffs tariffs = new Tariffs();
         tariffs.show();
-//        tariff.createTariff();
-//        tariff = tariffs.getTariff();
-//        tariff.updateTariff();
+         tariff.createTariff();
+       tariff = tariffs.getTariff();
+        tariff.updateTariff();
 //
 //
 //
