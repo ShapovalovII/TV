@@ -4,49 +4,112 @@ import java.util.Scanner;
 
 public class Client {
     private int id;
-    private String nameClient;
-    private String surnameClient;
-    private String lastnameClient;
+    private String name;
+    private String surname;
+    private String lastName;
     private String street;
     private int flat;
-    private String phone;
-    private String lastphone;
-    private int numberCont;            //Номер контракта
-    private String dateCont;           //Дата контракта
-    private String dateConnect;        //Дата подключения
+    private String mobilePhone;
+    private String homePhone;
+    private int numberContract;            //Номер контракта
+    private String dateContract;           //Дата контракта
+    private String dateConnected;        //Дата подключения
+
+    private String fullName;
+    private String fullAddress;
 
     public Client() {
     }
 
 
-    public Client(int id, String nameClient, String surnameClient, String lastnameClient, String street,
-                  int flat, String phone, String lastphone, int numberCont, String dateCont, String dateConnect) {
+    public Client(int id, String name, String surname, String lastName, String street,
+                  int flat, String mobilePhone, String homePhone, int numberContract, String dateContract, String dateConnected) {
         this.id = id;
-        this.nameClient = nameClient;
-        this.surnameClient = surnameClient;
-        this.lastnameClient = lastnameClient;
+        this.name = name;
+        this.surname = surname;
+        this.lastName = lastName;
         this.street = street;
         this.flat = flat;
-        this.phone = phone;
-        this.lastphone = lastphone;
-        this.numberCont = numberCont;
-        this.dateCont = dateCont;
-        this.dateConnect = dateConnect;
+        this.mobilePhone = mobilePhone;
+        this.homePhone = homePhone;
+        this.numberContract = numberContract;
+        this.dateContract = dateContract;
+        this.dateConnected = dateConnected;
+
+        this.fullName = String.format("%s %s %s", surname, name, lastName);
+        this.fullAddress = String.format("%s %s", street, String.valueOf(flat));
+
     }
 
 
+
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public int getFlat() {
+        return flat;
+    }
+
+    public String getFullAddress() {
+        return fullAddress;
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public String getHomePhone() {
+        return homePhone;
+    }
+
+    public int getNumberContract() {
+        return numberContract;
+    }
+
+    public String getDateContract() {
+        return dateContract;
+    }
+
+    public String getDateConnected() {
+        return dateConnected;
+    }
+
+
+
     private void addToDatabaseClient() {
-        String sql = String.format("INSERT INTO client(nameClient, surnameClient, lastnameClient, street, flat, phone, lastphone, numberCont, dateCont, dateConnect)" +
+        String sql = String.format("INSERT INTO client(name, surname, lastName, street, flat, mobilePhone, homePhone, numberContract, dateContract, dateConnected)" +
                         " VALUES('%s','%s','%s','%s','%d','%s','%s','%d','%s','%s')",       //Использовать метод format из класса String, для сохранения Client
-                this.nameClient, this.surnameClient, this.lastnameClient, this.street, this.flat, this.phone, this.lastphone, this.numberCont, this.dateCont, this.dateConnect);
+                this.name, this.surname, this.lastName, this.street, this.flat, this.mobilePhone, this.homePhone, this.numberContract, this.dateContract, this.dateConnected);
         System.out.println(sql);
         Database.executeSQL(sql);      //Вызов метода "executeSQL"  для добавления клиентов в Базу Данных
     }
 
     private void updateClientInDatabase() {
-        String sql = String.format("UPDATE client SET nameClient = '%s', surnameClient = '%s', lastnameClient = '%s', " +
-                                "street = '%s', flat = '%d', phone = '%s', lastphone = '%s', numberCont = '%d', dateCont = '%s', dateConnect = '%s' where id = %d",
-                        this.nameClient, this.surnameClient, this.lastnameClient, this.street, this.flat, this.phone, this.lastphone, this.numberCont, this.dateCont, this.dateConnect, id);
+        String sql = String.format("UPDATE client SET name = '%s', surname = '%s', lastName = '%s', " +
+                        "street = '%s', flat = '%d', mobilePhone = '%s', homePhone = '%s', numberContract = '%d', dateContract = '%s', dateConnected = '%s' where id = %d",
+                this.name, this.surname, this.lastName, this.street, this.flat, this.mobilePhone, this.homePhone, this.numberContract, this.dateContract, this.dateConnected, id);
         System.out.println(sql);
         Database.executeSQL(sql);
     }
@@ -57,90 +120,6 @@ public class Client {
         Database.executeSQL(sql);
     }
 
-    public Client createClient() {
-        System.out.println("Create new client: ");
-        Scanner scan = new Scanner(System.in);
-
-        System.out.print("Name: ");
-        this.nameClient = scan.nextLine();
-
-        System.out.print("Surname: ");
-        this.surnameClient = scan.nextLine();
-
-        System.out.print("Lastname: ");
-        this.lastnameClient = scan.nextLine();
-
-        System.out.print("Street: ");
-        this.street = scan.nextLine();
-
-        System.out.print("Flat: ");
-        this.flat = scan.nextInt();
-
-        scan.nextLine();      //Метод scan.nextInt не использует последний символ новой строки вашего ввода, и, таким образом, эта строка используется в следующем вызове  scan.nextLine();
-
-        System.out.print("Phone: ");
-        this.phone = scan.nextLine();
-
-        System.out.print("Lastphone: ");
-        this.lastphone = scan.nextLine();
-
-        System.out.print("NumderCont: ");
-        this.numberCont = scan.nextInt();
-
-        scan.nextLine();
-
-        System.out.print("DateCont: ");
-        this.dateCont = scan.nextLine();
-
-        System.out.print("DateConnect: ");
-        this.dateConnect = scan.nextLine();
-
-        addToDatabaseClient();
-        return this;
-    }
-
-    public Client updateClient() {
-        System.out.println("Update client: ");
-        Scanner scan = new Scanner(System.in);
-
-        System.out.print("Name: ");
-        this.nameClient = scan.nextLine();
-
-        System.out.print("Surname: ");
-        this.surnameClient = scan.nextLine();
-
-        System.out.print("Lastname: ");
-        this.lastnameClient = scan.nextLine();
-
-        System.out.print("Street: ");
-        this.street = scan.nextLine();
-
-        System.out.print("Flat: ");
-        this.flat = scan.nextInt();
-
-        scan.nextLine();      //Метод scan.nextInt не использует последний символ новой строки вашего ввода, и, таким образом, эта строка используется в следующем вызове  scan.nextLine();
-
-        System.out.print("Phone: ");
-        this.phone = scan.nextLine();
-
-        System.out.print("Lastphone: ");
-        this.lastphone = scan.nextLine();
-
-        System.out.print("NumderCont: ");
-        this.numberCont = scan.nextInt();
-
-        scan.nextLine();
-
-        System.out.print("DateCont: ");
-        this.dateCont = scan.nextLine();
-
-        System.out.print("DateConnect: ");
-        this.dateConnect = scan.nextLine();
-
-        updateClientInDatabase();
-        return this;
-    }
-
     public void deleteClient(){
         deleteFromDatabase();
     }
@@ -149,23 +128,15 @@ public class Client {
     public void show() {
         System.out.println("****");
         System.out.println("id: " + this.id);
-        System.out.println("Name Client: " + this.nameClient);
-        System.out.println("Surname Client: " + this.surnameClient);
-        System.out.println("Lastname Client: " + this.lastnameClient);
+        System.out.println("Name Client: " + this.name);
+        System.out.println("Surname Client: " + this.surname);
+        System.out.println("Lastname Client: " + this.lastName);
         System.out.println("Street: " + this.street);
         System.out.println("Flat: " + this.flat);
-        System.out.println("Phone: " + this.phone);
-        System.out.println("Lastphone: " + this.lastphone);
-        System.out.println("NumderCont: " + this.numberCont);
-        System.out.println("DateCont: " + this.dateCont);
-        System.out.println("DateConnect: " + this.dateConnect);
-    }
-
-    public String getSurnameClient(){
-        return this.surnameClient;
-    }
-
-    public String getNameClient() {
-        return nameClient;
+        System.out.println("Phone: " + this.mobilePhone);
+        System.out.println("Lastphone: " + this.homePhone);
+        System.out.println("NumderCont: " + this.numberContract);
+        System.out.println("DateCont: " + this.dateContract);
+        System.out.println("DateConnect: " + this.dateConnected);
     }
 }
