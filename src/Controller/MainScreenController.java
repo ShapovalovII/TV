@@ -80,7 +80,11 @@ public class MainScreenController implements Initializable {
         price.setCellValueFactory(new PropertyValueFactory<Tariff, String>("price"));
         //dateAdd.setCellValueFactory(new PropertyValueFactory<Client, String>("fullName"));
 
-        tariffsTable.setItems(getTariffsObservableList());
+       try {
+           tariffsTable.setItems(getTariffsObservableList());
+       }catch (NullPointerException e){
+           System.out.println("Tariff is missing");
+       }
     }
 
 //    @FXML

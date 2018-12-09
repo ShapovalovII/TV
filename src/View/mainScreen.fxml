@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -15,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainScreenController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainScreenController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -64,7 +68,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextField fx:id="searchField" layoutX="14.0" layoutY="14.0" onInputMethodTextChanged="#searchClient" prefHeight="27.0" prefWidth="610.0" promptText="Введите фамилию клиента" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                              <TextField layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="610.0" promptText="Введите фамилию клиента" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
                               <TableView fx:id="clientsTable" layoutX="14.0" layoutY="82.0" prefHeight="243.0" prefWidth="612.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="80.0">
                                 <columns>
                                   <TableColumn fx:id="fullName" prefWidth="75.0" text="ФИО" />
@@ -95,7 +99,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TableView fx:id="tariffsTable" layoutX="14.0" layoutY="58.0" onMouseClicked="#openTariffDetails" prefHeight="223.0" prefWidth="612.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="50.0">
+                              <TableView fx:id="tariffsTable" layoutX="14.0" layoutY="58.0" prefHeight="223.0" prefWidth="612.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="50.0">
                                 <columns>
                                   <TableColumn fx:id="name" prefWidth="75.0" text="Название" />
                                   <TableColumn fx:id="price" prefWidth="75.0" text="Сумма" />
