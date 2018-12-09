@@ -31,6 +31,14 @@ public class Clients {
 
         return FXCollections.observableArrayList(tempList);
     }
+
+    public static void deleteClientFromGlobalList(int id) {
+        for (int index = 0; index < clients.size(); index++) {
+            if (clients.get(index).getId() == id) {
+                clients.remove(index);
+            }
+        }
+    }
 }
 
 

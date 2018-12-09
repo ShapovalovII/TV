@@ -20,4 +20,12 @@ public class Tariffs {
         return FXCollections.observableArrayList(tariffs);
     }
 
+    public static void deleteTariffFromGlobalList(int id) {
+        for (int index = 0; index < tariffs.size(); index++) {
+            if (tariffs.get(index).getId() == id) {
+                tariffs.remove(index);
+            }
+        }
+    }
+
 }

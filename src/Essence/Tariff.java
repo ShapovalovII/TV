@@ -3,6 +3,8 @@ package Essence;
 import java.util.Locale;
 import java.util.Scanner;
 
+import static Essence.Tariffs.deleteTariffFromGlobalList;
+
 public class Tariff {
     private int id;
     private String nameTariff;
@@ -81,6 +83,7 @@ public class Tariff {
 
     public void deleteTariff() {
         deleteFromDatabase();
+        deleteTariffFromGlobalList(this.id);
     }
 
     public void show() {
