@@ -3,23 +3,31 @@ package Controller;
 import Essence.Client;
 import Essence.Clients;
 import Essence.Database;
+import Essence.Tariff;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
-import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import static Essence.Clients.getClientsObservableList;
+import static Essence.Tariffs.getTariffsObservableList;
 
 public class MainScreenController implements Initializable {
 
     @FXML
     private Tab Client;
+
+    @FXML
+    private TextField searchField;
 
     @FXML
     private TableView<Client> clientsTable;
@@ -39,6 +47,19 @@ public class MainScreenController implements Initializable {
     @FXML
     private Tab Tariff;
 
+    @FXML
+    private TableView<Tariff> tariffsTable;
+
+    @FXML
+    private TableColumn<Tariff, String> name;
+
+    @FXML
+    private TableColumn<Tariff, String> price;
+
+    @FXML
+    private TableColumn<Tariff, String> dateAdd;
+
+
     Clients clients;
 
     @Override
@@ -53,11 +74,33 @@ public class MainScreenController implements Initializable {
         homePhone.setCellValueFactory(new PropertyValueFactory<Client, String>("homePhone"));
 
         clientsTable.setItems(getClientsObservableList());
+
+
+        name.setCellValueFactory(new PropertyValueFactory<Tariff, String>("nameTariff"));
+        price.setCellValueFactory(new PropertyValueFactory<Tariff, String>("price"));
+        //dateAdd.setCellValueFactory(new PropertyValueFactory<Client, String>("fullName"));
+
+        tariffsTable.setItems(getTariffsObservableList());
+    }
+
+//    @FXML
+//    void searchClient(KeyEvent event) {
+//        System.out.println("Search client with " + searchField.getText());
+//    }
+
+    @FXML
+    void createClient(ActionEvent event) {
+        System.out.println("Create client");
     }
 
     @FXML
-    void searchClients(KeyEvent event) {
-
+    void createTariff(ActionEvent event) {
+        System.out.println("Create tariff");
     }
+
+//    @FXML
+//    void openTariffDetails(MouseEvent event){
+//        System.out.printf("Open tariff");
+//    }
 
 }
