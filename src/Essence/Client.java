@@ -2,6 +2,8 @@ package Essence;
 
 import java.util.Scanner;
 
+import static Essence.Clients.deleteClientFromGlobalList;
+
 public class Client {
     private int id;
     private String name;
@@ -40,9 +42,6 @@ public class Client {
         this.fullAddress = String.format("%s %s", street, String.valueOf(flat));
 
     }
-
-
-
 
     public int getId() {
         return id;
@@ -122,6 +121,7 @@ public class Client {
 
     public void deleteClient(){
         deleteFromDatabase();
+        deleteClientFromGlobalList(this.id);
     }
 
 
