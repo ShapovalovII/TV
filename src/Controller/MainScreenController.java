@@ -1,9 +1,18 @@
 package Controller;
 
+<<<<<<< Updated upstream
 import Essence.Client;
 import Essence.Clients;
 import Essence.Database;
 import Essence.Tariff;
+=======
+import Essence.*;
+<<<<<<< HEAD
+import View.NewClient;
+=======
+>>>>>>> origin/master
+import javafx.collections.ObservableList;
+>>>>>>> Stashed changes
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -87,10 +96,25 @@ public class MainScreenController implements Initializable {
        }
     }
 
+<<<<<<< Updated upstream
 //    @FXML
 //    void searchClient(KeyEvent event) {
 //        System.out.println("Search client with " + searchField.getText());
 //    }
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/master
+    @FXML
+    void searchClients(KeyEvent event) {
+        try {
+        clientsTable.setItems(getSimilarClientsByFullName(searchField.getText()));
+        } catch (NullPointerException e) {
+            System.out.printf("Not found clients in database");
+        }
+    }
+>>>>>>> Stashed changes
 
     @FXML
     void createClient(ActionEvent event) {
