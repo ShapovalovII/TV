@@ -1,18 +1,16 @@
 package Controller;
 
 import Essence.*;
+import View.NewClient;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -46,6 +44,9 @@ public class MainScreenController implements Initializable {
 
     @FXML
     private Tab Tariff;
+
+    @FXML
+    private Button createClientButton;
 
     @FXML
     private TableView<Tariff> tariffsTable;
@@ -86,6 +87,7 @@ public class MainScreenController implements Initializable {
         updateTariffsTable(getTariffsObservableList());
     }
 
+
     @FXML
     void searchClients(KeyEvent event) {
         try {
@@ -97,7 +99,15 @@ public class MainScreenController implements Initializable {
 
     @FXML
     void createClient(ActionEvent event) {
-        System.out.println("Create client");
+        try {
+            NewClient newClient = new NewClient();
+           newClient.start(new Stage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Stage stage = (Stage) createClientButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
