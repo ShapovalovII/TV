@@ -1,22 +1,19 @@
 package Essence;
 
-import java.util.Scanner;
-
-import static Essence.Clients.deleteClientFromGlobalList;
 
 public class Client {
     private int id;
     private String nameClient;
-    private String surname;
-    private String lastname;
-    private String street;
-    private String numberStreet;
-    private String flat;
-    private String mobilePhone;
-    private String homePhone;
-    private String numberContract;            //Номер контракта
-    private String dateContract;           //Дата контракта
-    private String dateConnected;        //Дата подключения
+    private String surnameClient;
+    private String lastnameClient;
+    private String streetClient;
+    private String numberStreetClient;
+    private String flatClient;
+    private String mobilePhoneClient;
+    private String homePhoneClient;
+    private String numberContractClient;            //Номер контракта
+    private String dateContractClient;           //Дата контракта
+    private String dateConnectedClient;        //Дата подключения
 
     private String fullName;
     private String fullAddress;
@@ -25,43 +22,44 @@ public class Client {
     }
 
 
-    public Client(int id, String nameClient, String surname, String lastname, String street, String numberStreet,
-                  String flat, String mobilePhone, String homePhone, String numberContract, String dateContract, String dateConnected) {
+    public Client(int id, String nameClient, String surnameClient, String lastnameClient, String streetClient, String numberStreetClient,
+                  String flatClient, String mobilePhoneClient, String homePhoneClient, String numberContractClient, String dateContractClient, String dateConnectedClient) {
         this.id = id;
         this.nameClient = nameClient;
-        this.surname = surname;
-        this.lastname = lastname;
-        this.street = street;
-        this.numberStreet = numberStreet;
-        this.flat = flat;
-        this.mobilePhone = mobilePhone;
-        this.homePhone = homePhone;
-        this.numberContract = numberContract;
-        this.dateContract = dateContract;
-        this.dateConnected = dateConnected;
+        this.surnameClient = surnameClient;
+        this.lastnameClient = lastnameClient;
+        this.streetClient = streetClient;
+        this.numberStreetClient = numberStreetClient;
+        this.flatClient = flatClient;
+        this.mobilePhoneClient = mobilePhoneClient;
+        this.homePhoneClient = homePhoneClient;
+        this.numberContractClient = numberContractClient;
+        this.dateContractClient = dateContractClient;
+        this.dateConnectedClient = dateConnectedClient;
 
-        this.fullName = String.format("%s %s %s", surname, nameClient, lastname);
-        this.fullAddress = String.format("%s %s %s", street, numberContract, flat);
+        this.fullName = String.format("%s %s %s", surnameClient, nameClient, lastnameClient);
+        this.fullAddress = String.format("%s %s %s", streetClient, numberContractClient, flatClient);
 
     }
 
 
-    public Client(String nameClient, String surname, String lastname, String street, String numberStreet,
-                  String flat, String mobilePhone, String homePhone, String numberContract, String dateContract, String dateConnected) {
+    public Client(String nameClient, String surnameClient, String lastnameClient, String streetClient, String numberStreetClient,
+                  String flatClient, String mobilePhoneClient, String homePhoneClient, String numberContractClient, String dateContractClient, String dateConnectedClient) {
         this.nameClient = nameClient;
-        this.surname = surname;
-        this.lastname = lastname;
-        this.street = street;
-        this.numberStreet = numberStreet;
-        this.flat = flat;
-        this.mobilePhone = mobilePhone;
-        this.homePhone = homePhone;
-        this.numberContract = numberContract;
-        this.dateContract = dateContract;
-        this.dateConnected = dateConnected;
+        this.surnameClient = surnameClient;
+        this.lastnameClient = lastnameClient;
+        this.streetClient = streetClient;
+        this.numberStreetClient = numberStreetClient;
+        this.flatClient = flatClient;
+        this.mobilePhoneClient = mobilePhoneClient;
+        this.homePhoneClient = homePhoneClient;
+        this.numberContractClient = numberContractClient;
+        this.dateContractClient = dateContractClient;
+        this.dateConnectedClient = dateConnectedClient;
     }
 
     public int getId() {
+
         return id;
     }
 
@@ -69,64 +67,68 @@ public class Client {
         return nameClient;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getSurnameClient() {
+        return surnameClient;
     }
 
-    public String getLastName() {
-        return lastname;
+    public String getLastNameClient() {
+        return lastnameClient;
     }
 
     public String getFullName() {
         return fullName;
     }
 
-    public String getStreet() {
-        return street;
+    public String getStreetClient() {
+        return streetClient;
     }
 
-    public String getFlat() {
-        return flat;
+    public String getNumberStreetClient() {
+        return numberStreetClient;
+    }
+
+    public String getFlatClient() {
+        return flatClient;
     }
 
     public String getFullAddress() {
         return fullAddress;
     }
 
-    public String getMobilePhone() {
-        return mobilePhone;
+    public String getMobilePhoneClient() {
+        return mobilePhoneClient;
     }
 
-    public String getHomePhone() {
-        return homePhone;
+    public String getHomePhoneClient() {
+        return homePhoneClient;
     }
 
-    public String getNumberContract() {
-        return numberContract;
+    public String getNumberContractClient() {
+        return numberContractClient;
     }
 
-    public String getDateContract() {
-        return dateContract;
+    public String getDateContractClient() {
+        return dateContractClient;
     }
 
-    public String getDateConnected() {
-        return dateConnected;
+    public String getDateConnectedClient() {
+        return dateConnectedClient;
     }
 
 
 
-    private void addToDatabaseClient() {
-        String sql = String.format("INSERT INTO client(name, surname, lastname, street, numberStreet, flat, mobilePhone, homePhone, numberContract, dateContract, dateConnected)" +
+    public void addToDatabaseClient() {
+        String sql = String.format("INSERT INTO client(nameClient, surnameClient, lastnameClient, streetClient, numberStreetClient, flatClient, mobilePhoneClient, homePhoneClient, numberContractClient, dateContractClient, dateConnectedClient)" +
                         " VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",       //Использовать метод format из класса String, для сохранения Client
-                this.nameClient, this.surname, this.lastname, this.street, this.flat, this.mobilePhone, this.homePhone, this.numberContract, this.dateContract, this.dateConnected);
+                this.nameClient, this.surnameClient, this.lastnameClient, this.streetClient, this.numberStreetClient, this.flatClient,  this.mobilePhoneClient, this.homePhoneClient, this.numberContractClient, this.dateContractClient, this.dateConnectedClient);
         System.out.println(sql);
         Database.executeSQL(sql);      //Вызов метода "executeSQL"  для добавления клиентов в Базу Данных
     }
 
     private void updateClientInDatabase() {
-        String sql = String.format("UPDATE client SET name = '%s', surname = '%s', lastName = '%s', " +
-                        "street = '%s', numberStreet = '%s', flat = '%s', mobilePhone = '%s', homePhone = '%s', numberContract = '%s', dateContract = '%s', dateConnected = '%s' where id = %d",
-                this.nameClient, this.surname, this.lastname, this.street, this.flat, this.mobilePhone, this.homePhone, this.numberContract, this.dateContract, this.dateConnected, id);
+        String sql = String.format("UPDATE client SET nameClient = '%s', surnameClient = '%s', lastNameClient = '%s', " +
+                        "streetClient = '%s', numberStreetClient = '%s', flatClient = '%s', mobilePhoneClient = '%s', homePhoneClient = '%s', numberContractClient = '%s', dateContractClient = '%s', dateConnectedClient = '%s' where id = %d",
+                this.nameClient, this.surnameClient, this.lastnameClient, this.streetClient, this.flatClient, this.mobilePhoneClient, this.homePhoneClient, this.numberContractClient, this.dateContractClient, this.dateConnectedClient, id);
         System.out.println(sql);
         Database.executeSQL(sql);
     }
@@ -146,14 +148,14 @@ public class Client {
         System.out.println("****");
         System.out.println("id: " + this.id);
         System.out.println("Name Client: " + this.nameClient);
-        System.out.println("Surname Client: " + this.surname);
-        System.out.println("Lastname Client: " + this.lastname);
-        System.out.println("Street: " + this.street);
-        System.out.println("Flat: " + this.flat);
-        System.out.println("Phone: " + this.mobilePhone);
-        System.out.println("Lastphone: " + this.homePhone);
-        System.out.println("NumderCont: " + this.numberContract);
-        System.out.println("DateCont: " + this.dateContract);
-        System.out.println("DateConnect: " + this.dateConnected);
+        System.out.println("Surname Client: " + this.surnameClient);
+        System.out.println("Lastname Client: " + this.lastnameClient);
+        System.out.println("Street: " + this.streetClient);
+        System.out.println("Flat: " + this.flatClient);
+        System.out.println("Phone: " + this.mobilePhoneClient);
+        System.out.println("Lastphone: " + this.homePhoneClient);
+        System.out.println("NumderCont: " + this.numberContractClient);
+        System.out.println("DateCont: " + this.dateContractClient);
+        System.out.println("DateConnect: " + this.dateConnectedClient);
     }
 }

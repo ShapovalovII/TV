@@ -39,16 +39,16 @@ public class Database {
         String createClientSQL = "CREATE TABLE IF NOT EXISTS client (\n"
                 + "	id integer PRIMARY KEY AUTOINCREMENT,\n"
                 + "	nameClient text NOT NULL,\n"
-                + "	surname text NOT NULL,\n"
-                + "	lastname text NOT NULL,\n"
-                + " street text NOT NULL,\n"
-                + " numberStreet text NOT NULL,\n"
-                + " flat text NOT NULL,\n"
-                + " mobilePhone text NOT NULL,\n"
-                + " homePhone text NOT NULL,\n"
-                + " numberContract text NOT NULL,\n"
-                + " dateContract text NOT NULL,\n"
-                + " dateConnected text NOT NULL\n"
+                + "	surnameClient text NOT NULL,\n"
+                + "	lastnameClient text NOT NULL,\n"
+                + " streetClient text NOT NULL,\n"
+                + " numberStreetClient text NOT NULL,\n"
+                + " flatClient text NOT NULL,\n"
+                + " mobilePhoneClient text NOT NULL,\n"
+                + " homePhoneClient text NOT NULL,\n"
+                + " numberContractClient text NOT NULL,\n"
+                + " dateContractClient text NOT NULL,\n"
+                + " dateConnectedClient text NOT NULL\n"
                 + ");";
 
         String createTariffSQL = "CREATE TABLE IF NOT EXISTS tariff (\n"
@@ -87,18 +87,18 @@ public class Database {
             while (result.next()) {
                 int id = result.getInt("id");                        // Через result проходим по всем элементам
                 String nameClient = result.getString("nameClient");
-                String surname = result.getString("surname");
-                String lastname = result.getString("lastname");
-                String street = result.getString("street");
-                String numberStreet = result.getString("numberStreet");
-                String flat = result.getString("flat");
-                String mobilePhone = result.getString("mobilePhone");
-                String homePhone = result.getString("homePhone");
-                String numberContract = result.getString("numberContract");
-                String dateContract = result.getString("dateContract");
-                String dateConnected = result.getString("dateConnected");
+                String surnameClient = result.getString("surnameClient");
+                String lastnameClient = result.getString("lastnameClient");
+                String streetClient = result.getString("streetClient");
+                String numberStreetClient = result.getString("numberStreetClient");
+                String flatClient = result.getString("flatClient");
+                String mobilePhoneClient = result.getString("mobilePhoneClient");
+                String homePhoneClient = result.getString("homePhoneClient");
+                String numberContractClient = result.getString("numberContractClient");
+                String dateContractClient = result.getString("dateContractClient");
+                String dateConnectedClient = result.getString("dateConnectedClient");
 
-                Client client = new Client(id, nameClient, surname, lastname, street, numberStreet, flat, mobilePhone, homePhone, numberContract, dateContract, dateConnected);
+                Client client = new Client(id, nameClient, surnameClient, lastnameClient, streetClient, numberStreetClient, flatClient, mobilePhoneClient, homePhoneClient, numberContractClient, dateContractClient, dateConnectedClient);
 
                 clients.add(client);                //В список клиентов ДОБАВИТЬ клиента
             }

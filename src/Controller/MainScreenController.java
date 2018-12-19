@@ -1,33 +1,30 @@
 package Controller;
 
-<<<<<<< Updated upstream
+
 import Essence.Client;
 import Essence.Clients;
 import Essence.Database;
 import Essence.Tariff;
-=======
+
 import Essence.*;
-<<<<<<< HEAD
+
 import View.NewClient;
-=======
->>>>>>> origin/master
+
 import javafx.collections.ObservableList;
->>>>>>> Stashed changes
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import static Essence.Clients.getClientsObservableList;
+import static Essence.Clients.getSimilarClientsByFullName;
 import static Essence.Tariffs.getTariffsObservableList;
 
 public class MainScreenController implements Initializable {
@@ -68,6 +65,9 @@ public class MainScreenController implements Initializable {
     @FXML
     private TableColumn<Tariff, String> dateAdd;
 
+    @FXML
+    private Button createClientButton;
+
 
     Clients clients;
 
@@ -79,8 +79,8 @@ public class MainScreenController implements Initializable {
 
         fullName.setCellValueFactory(new PropertyValueFactory<Client, String>("fullName"));
         address.setCellValueFactory(new PropertyValueFactory<Client, String>("fullAddress"));
-        mobilePhone.setCellValueFactory(new PropertyValueFactory<Client, String>("mobilePhone"));
-        homePhone.setCellValueFactory(new PropertyValueFactory<Client, String>("homePhone"));
+        mobilePhone.setCellValueFactory(new PropertyValueFactory<Client, String>("mobilePhoneClient"));
+        homePhone.setCellValueFactory(new PropertyValueFactory<Client, String>("homePhoneClient"));
 
         clientsTable.setItems(getClientsObservableList());
 
@@ -96,16 +96,14 @@ public class MainScreenController implements Initializable {
        }
     }
 
-<<<<<<< Updated upstream
-//    @FXML
-//    void searchClient(KeyEvent event) {
-//        System.out.println("Search client with " + searchField.getText());
-//    }
-=======
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
+    @FXML
+    void searchClient(KeyEvent event) {
+        System.out.println("Search client with " + searchField.getText());
+    }
+
+
+
     @FXML
     void searchClients(KeyEvent event) {
         try {
@@ -114,11 +112,15 @@ public class MainScreenController implements Initializable {
             System.out.printf("Not found clients in database");
         }
     }
->>>>>>> Stashed changes
+
 
     @FXML
-    void createClient(ActionEvent event) {
-        System.out.println("Create client");
+    void createClient(ActionEvent event) throws Exception {
+        Stage stage = (Stage) createClientButton.getScene().getWindow();
+        stage.close();
+        NewClient newClient = new NewClient();
+        newClient.start(new Stage());
+
     }
 
     @FXML
@@ -126,9 +128,9 @@ public class MainScreenController implements Initializable {
         System.out.println("Create tariff");
     }
 
-//    @FXML
-//    void openTariffDetails(MouseEvent event){
-//        System.out.printf("Open tariff");
-//    }
+    @FXML
+    void openTariffDetails(MouseEvent event){
+        System.out.printf("Open tariff");
+    }
 
 }
